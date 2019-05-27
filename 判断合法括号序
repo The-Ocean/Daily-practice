@@ -1,0 +1,46 @@
+#include<iostream>
+#include<string>
+class Parenthesis {
+public:
+	bool chkParenthesis(std::string A, int n) {
+		int lfet = 0;
+		int right = 0;
+		for (int i = 0; i < n; i++)
+		{
+			if (A[i] != '(' && A[i] != ')')
+			{
+				return false;
+			}
+			if (A[i] == '(')
+			{
+				lfet++;
+			}
+			if (A[i] == ')')
+			{
+				right++;
+			}
+		}
+		if (lfet == right)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+};
+
+int main()
+{
+	Parenthesis A;
+	if (A.chkParenthesis("()()(((())))", 12))
+	{
+		printf("true\n");
+	}
+	else
+	{
+		printf("flase\n");
+	}
+	return 0;
+}

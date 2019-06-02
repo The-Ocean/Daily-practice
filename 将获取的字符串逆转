@@ -1,0 +1,32 @@
+//将获取的字符串逆转
+#include<iostream>
+#include<string>
+#include <algorithm>
+int main()
+{
+	std::string str;
+
+	getline(std::cin, str);//获取字符串
+	std::reverse(str.begin(), str.end());//反转整个字符串
+	auto p = str.begin();
+	int i = 0;
+
+	while (1)
+	{
+
+		i = str.find(" ", i + 1, 1);
+
+		if (i == std::string::npos)
+		{
+			std::reverse(p, str.end());
+			break;
+		}
+		
+		std::reverse(p, (str.begin() + i));
+		p = str.begin() + i + 1;
+	}
+
+	std::cout << str << std::endl;
+	
+	return 0;
+}

@@ -1,0 +1,53 @@
+//例如：
+//A = “aba”，B = “b”。这里有4种把B插入A的办法：
+//* 在A的第一个字母之前 : "baba" 不是回文
+//* 在第一个字母‘a’之后 : "abba" 是回文
+//* 在字母‘b’之后 : "abba" 是回文
+//* 在第二个字母'a'之后 "abab" 不是回文
+//所以满足条件的答案为2
+#include<iostream>
+#include<string>
+
+bool IsHUIWEN(std::string str)
+{
+    int i = 0;
+    int end = str.size() - 1;
+    while(i < end)
+    {
+        if(str[i] == str[end])
+        {
+            i++;
+            end--;
+            continue;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+int main()
+{
+    std::string A;
+    std::string B;
+    std::cin>>A;
+    std::cin>>B;
+    
+    int count = 0;
+    for(int i = 0; i <= A.size(); i++)
+    {
+        std::string str;
+        str = A;
+        str.insert(i, B);
+        if(IsHUIWEN(str))
+        {
+            count++;
+        }
+    }
+    
+    std::cout<< count << std::endl;
+    return 0;
+}
